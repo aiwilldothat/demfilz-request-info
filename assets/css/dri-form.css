@@ -1,0 +1,261 @@
+/* Demfilz Request Info - button + popup form styles. Scoped to .dri- classes. */
+
+.dri-btn {
+	display: inline-flex;
+	align-items: center;
+	background: var(--dri-accent, #4f46e5);
+	color: var(--dri-accent-text, #ffffff);
+	border: 0;
+	border-radius: 8px;
+	padding: 11px 20px;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.2;
+	cursor: pointer;
+	text-decoration: none;
+	transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.dri-btn:hover {
+	filter: brightness(1.1);
+	color: var(--dri-accent-text, #ffffff);
+}
+
+.dri-btn:focus-visible {
+	outline: 2px solid var(--dri-accent, #4f46e5);
+	outline-offset: 2px;
+}
+
+.dri-btn-wrap {
+	margin: 1.25em 0;
+}
+
+/* Overlay + modal. */
+
+.dri-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 999999;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+	background: rgba(15, 23, 42, 0.6);
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+.dri-overlay.dri-open {
+	display: flex;
+}
+
+body.dri-noscroll {
+	overflow: hidden;
+}
+
+.dri-modal {
+	position: relative;
+	background: #ffffff;
+	color: #475569;
+	border-radius: 14px;
+	box-shadow: 0 24px 64px rgba(15, 23, 42, 0.35);
+	width: 100%;
+	max-width: 580px;
+	max-height: 92vh;
+	overflow: auto;
+	padding: 28px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	animation: dri-zoom 0.22s ease;
+	box-sizing: border-box;
+}
+
+.dri-modal *,
+.dri-modal *::before,
+.dri-modal *::after {
+	box-sizing: border-box;
+}
+
+@keyframes dri-zoom {
+	from {
+		opacity: 0;
+		transform: scale(0.94);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dri-modal {
+		animation: none;
+	}
+	.dri-btn {
+		transition: none;
+	}
+}
+
+.dri-close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	width: 34px;
+	height: 34px;
+	border: 0;
+	border-radius: 50%;
+	background: #f1f5f9;
+	color: #475569;
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+	transition: background 0.15s ease;
+}
+
+.dri-close:hover {
+	background: #e2e8f0;
+}
+
+.dri-heading {
+	margin: 0 0 6px;
+	font-size: 22px;
+	font-weight: 700;
+	color: #0f172a;
+	line-height: 1.25;
+}
+
+.dri-sub {
+	margin: 0 0 18px;
+	font-size: 14px;
+	color: #64748b;
+}
+
+/* Form layout. */
+
+.dri-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 4px 14px;
+}
+
+.dri-field {
+	margin: 0 0 10px;
+}
+
+.dri-field-wide {
+	grid-column: 1 / -1;
+}
+
+.dri-field label {
+	display: block;
+	margin: 0 0 4px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #334155;
+}
+
+.dri-req {
+	color: #dc2626;
+}
+
+.dri-field input,
+.dri-field textarea {
+	width: 100%;
+	padding: 9px 12px;
+	border: 1px solid #cbd5e1;
+	border-radius: 8px;
+	background: #ffffff;
+	color: #0f172a;
+	font-size: 14px;
+	font-family: inherit;
+	line-height: 1.4;
+}
+
+.dri-field input:focus,
+.dri-field textarea:focus {
+	outline: none;
+	border-color: var(--dri-accent, #4f46e5);
+	box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.dri-field textarea {
+	resize: vertical;
+	min-height: 110px;
+}
+
+.dri-field input.dri-invalid,
+.dri-field textarea.dri-invalid {
+	border-color: #dc2626;
+}
+
+.dri-field-error {
+	display: block;
+	margin-top: 4px;
+	font-size: 12px;
+	color: #dc2626;
+}
+
+/* Honeypot - visually removed for humans, present for bots. */
+
+.dri-hp {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	margin: 0;
+}
+
+.dri-msg {
+	margin: 4px 0 10px;
+	padding: 10px 14px;
+	border-radius: 8px;
+	background: #fef2f2;
+	border: 1px solid #fecaca;
+	color: #b91c1c;
+	font-size: 14px;
+}
+
+.dri-actions {
+	margin: 8px 0 0;
+}
+
+.dri-submit[disabled] {
+	opacity: 0.6;
+	cursor: wait;
+}
+
+/* Success view. */
+
+.dri-success-view {
+	text-align: center;
+	padding: 12px 4px;
+}
+
+.dri-success-icon {
+	width: 52px;
+	height: 52px;
+	margin: 0 auto 14px;
+	border-radius: 50%;
+	background: #dcfce7;
+	color: #16a34a;
+	font-size: 28px;
+	line-height: 52px;
+	font-weight: 700;
+}
+
+.dri-success-text {
+	margin: 0 0 16px;
+	font-size: 15px;
+	color: #475569;
+}
+
+/* Small screens: single column. */
+
+@media (max-width: 560px) {
+	.dri-grid {
+		grid-template-columns: 1fr;
+	}
+	.dri-modal {
+		padding: 22px 18px;
+	}
+}
